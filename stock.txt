@@ -1,0 +1,4 @@
+mandarina,23.5,33
+yogur,0.5,30
+conserva de peixe,0.8,200
+xamon,4.5,50
