@@ -19,6 +19,22 @@ public class Ofertas {
         this.codoferta = codoferta;
         this.descuento = descuento;
     }
+
+    public String getCodoferta() {
+        return codoferta;
+    }
+
+    public void setCodoferta(String codoferta) {
+        this.codoferta = codoferta;
+    }
+
+    public float getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(float descuento) {
+        this.descuento = descuento;
+    }
         
         
         public Ofertas() throws FileNotFoundException {
@@ -34,12 +50,15 @@ public class Ofertas {
             }
     }
         
-        public void calcularPrecioDescuento(float precio) throws FileNotFoundException{
-            float descuento;
+        public void calcularPrecioDescuento(float precio, String codigo) throws FileNotFoundException{
+            float preciodes;
             Stock st = new Stock();
-            descuento =st.getPrecio();
-                    
-                   System.out.println(st.stock.toString());
+            
+            for(int i =0;i<ofertas.size();i++){
+            
+                if(codigo.equals(ofertas.get(i).getCodoferta()))
+                    preciodes=st.getPrecio()*ofertas.get(i).getDescuento();
+            }
                     
                     
                     
