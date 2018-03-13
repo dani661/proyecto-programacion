@@ -11,7 +11,8 @@ public class Supermercado {
     public static void main(String[] args) throws FileNotFoundException {
         
         Stock s =new Stock();
-                
+            System.out.println(s.revisaStock());    //prueba del metodo
+            
         try {
             s.engadeProd();
         } catch (IOException ex) {

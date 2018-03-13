@@ -34,9 +34,9 @@ public class Stock {
             }
     }
 
-    public Stock(String nombreprod, float prescio, int existencias) {
+    public Stock(String nombreprod, float precio, int existencias) {
         this.producto = nombreprod;
-        this.precio = prescio;
+        this.precio = precio;
         this.cantidad = existencias;
     }
 
@@ -94,8 +94,20 @@ public class Stock {
         }
     }
     
-    public void revisaStock(){
+    public String revisaStock(){
+        ArrayList<String> prodreponer = new ArrayList<>();
         
+        for(int i=0; i<stock.size();i++){
+            if(stock.get(i).getCantidad()==0){
+                prodreponer.add("O producto "+stock.get(i)
+                        +" ten 0 unidades en stock e necesita repoñer.");
+                //System.out.println("O producto "+stock.get(i).getProducto());
+            }
+            else{
+                
+            }
+        }
+        return prodreponer.toString();
     }
     
 }
