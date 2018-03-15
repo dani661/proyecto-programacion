@@ -94,20 +94,19 @@ public class Stock {
         }
     }
     
-    public String revisaStock(){
-        ArrayList<String> prodreponer = new ArrayList<>();
+    public ArrayList revisaStock(){
+        ArrayList<Stock> prodreponer = new ArrayList<>();
         
         for(int i=0; i<stock.size();i++){
             if(stock.get(i).getCantidad()==0){
-                prodreponer.add("O producto "+stock.get(i)
-                        +" ten 0 unidades en stock e necesita repoñer.");
+                prodreponer.add(stock.get(i));
                 //System.out.println("O producto "+stock.get(i).getProducto());
             }
             else{
                 
             }
         }
-        return prodreponer.toString();
+        return prodreponer;
     }
     
 }

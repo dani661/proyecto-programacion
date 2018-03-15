@@ -11,9 +11,13 @@ public class Supermercado {
     public static void main(String[] args) throws FileNotFoundException {
         
         Stock s =new Stock();
-            System.out.println(s.revisaStock());    //prueba del metodo
-            
-        try {
+           
+         // Cajeros c =new Cajeros();
+           // c.Repon();
+          
+        
+           
+           try {
             s.engadeProd();
         } catch (IOException ex) {
             Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);

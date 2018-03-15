@@ -58,13 +58,12 @@ public class Ofertas {
             
                 if(codigo.equals(ofertas.get(i).getCodoferta()))
                     preciodes=st.getPrecio()*ofertas.get(i).getDescuento();
-            }
-                    
-                    
-                    
-                    
-                    
-            
+            }   
         }
+
+    public ArrayList<Ofertas> getOfertas() {
+        return ofertas;
+    }
+
         
 }
