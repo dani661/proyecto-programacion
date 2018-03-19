@@ -12,6 +12,10 @@ public class CestaCompra {
     private int numpro;
     public  ArrayList<Stock> cesta;
 
+    public ArrayList<Stock> getCesta() {
+        return cesta;
+    }
+
     public CestaCompra() {
     }
 
@@ -65,6 +69,7 @@ public class CestaCompra {
                 // con el int del parametro selecciono pos en a.list y lo meto en cesta
             Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad());
                    System.out.println(obs.toString());
+                   
                    cesta.add(obs);   //añado en cesta el objeto a la lista
                    
     }
