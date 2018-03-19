@@ -17,7 +17,7 @@ public class Stock {
     
     File fich =new File("Stock.txt");
     PrintWriter pw;
-    ArrayList<Stock> stock = new ArrayList<>();
+   public ArrayList<Stock> stock = new ArrayList<>();
     Scanner sc;
     
     
@@ -70,7 +70,7 @@ public class Stock {
 
     @Override
     public String toString() {
-        return producto +precio + " € , existencias=" + cantidad;
+        return producto+" "+precio + " € , existencias=" + cantidad;
     }
     
     public void engadeProd() throws IOException{

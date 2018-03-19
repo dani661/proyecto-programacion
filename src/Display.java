@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import supermercado.Stock;
 import supermercado.Supermercado;
 import javax.swing.DefaultListModel;
-import supermercado.Stock;
+import supermercado.CestaCompra;
 
 
 /*
@@ -119,16 +119,14 @@ public class Display extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             
-              int i=jList2.getSelectedIndex();
-                try {
-                    
-                    engadecesta(i);
-                    
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                        
-        
+        try {
+            int i=jList2.getSelectedIndex();
+            
+            CestaCompra c=new CestaCompra();
+            c.engadeCesta(i);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -178,13 +176,14 @@ public class Display extends javax.swing.JFrame {
 
     }
     public void engadecesta(int i) throws FileNotFoundException{
+        CestaCompra c=new CestaCompra();
         Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
-             // con el int del parametro selecciono pos en a.list y lo meto en s
-             
-        //   System.out.println( s.stock.get(i).toString());
-         //   cesta.add(new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad()));   //añado en cesta el objeto a la lista
+             // con el int del parametro selecciono pos en a.list y lo meto en cesta
+         Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad());
+           System.out.println( s.stock.get(i).toString());
+           System.out.println(s.stock.get(i).getProducto()+s.stock.get(i).getPrecio()+s.stock.get(i).getCantidad());
+         c.cesta.add(obs);   //añado en cesta el objeto a la lista
         
-        //petazo aqui
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
