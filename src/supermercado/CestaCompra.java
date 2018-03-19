@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class CestaCompra {
     private float precio,saldo,cambio;
     private int numpro;
-    private ArrayList<Stock> cesta;
+    static ArrayList<Stock> cesta;
 
     public CestaCompra() {
     }
@@ -58,10 +58,5 @@ public class CestaCompra {
     public String toString() {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
-    public void engadecesta(int i) throws FileNotFoundException{
-        Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
-        s=s.stock.get(i);      // con el int del parametro selecciono pos en a.list y lo meto en s
-                                
-        cesta.add(s);   //añado en cesta el objeto a la lista
-    }
+    
 }

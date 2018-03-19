@@ -64,9 +64,13 @@ public class Stock {
         this.cantidad = cantidad;
     }
 
+    public ArrayList<Stock> getStock() {
+        return stock;
+    }
+
     @Override
     public String toString() {
-        return "Stock{" + "nombreprod=" + producto + ", prescio=" + precio + ", existencias=" + cantidad + '}';
+        return producto +precio + " € , existencias=" + cantidad;
     }
     
     public void engadeProd() throws IOException{
