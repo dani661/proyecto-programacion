@@ -24,7 +24,7 @@ import supermercado.CestaCompra;
  */
 public class Display extends javax.swing.JFrame {
     
-    
+    CestaCompra c=new CestaCompra();
 
     /**
      * Creates new form Display
@@ -114,16 +114,15 @@ public class Display extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        CestaDisplay cd1=new CestaDisplay(c.getCesta());
+            cd1.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            
+       
         try {
             int i=jList2.getSelectedIndex();
-            
-            CestaCompra c=new CestaCompra();
             c.engadeCesta(i);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);

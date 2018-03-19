@@ -1,5 +1,6 @@
 package supermercado;
 
+import Display.Display;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,11 +13,15 @@ public class Supermercado {
     public static void main(String[] args) throws FileNotFoundException {
         int resposta=0;
         Stock s =new Stock();
-           
+        CestaCompra c= new CestaCompra();
+         
+        
+                    Display d1=new Display();
+                        d1.setVisible(true);
          // Cajeros c =new Cajeros();
            // c.Repon();
           
-       while(resposta!=1){
+      /* while(resposta!=1){
            String[] opciones={"ver productos","comprar producto","ver cesta da compra","salir"};
            
            String r=(String)JOptionPane.showInputDialog(null,"Selecciona opcion:"," ",JOptionPane.PLAIN_MESSAGE,null,opciones,opciones);
@@ -37,15 +42,15 @@ public class Supermercado {
             resposta= JOptionPane.showConfirmDialog(null, "Desea realizar otra accion?","", 1, 2);
             //0 e si, 1 e non
 //System.out.println(resposta);
-              
+        */      
          }
         
-           try {
+     /*      try {
             s.engadeProd();
         } catch (IOException ex) {
             Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
+    }*/
     
 }

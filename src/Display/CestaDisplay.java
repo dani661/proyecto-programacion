@@ -22,11 +22,12 @@ import supermercado.Supermercado;
  * @author Dani
  */
 public class CestaDisplay extends javax.swing.JFrame {
-
+    CestaCompra c=new CestaCompra();
     /**
      * Creates new form CestaDisplay
      */
-    public CestaDisplay() {
+    public CestaDisplay(ArrayList cesta) {
+        c.setCesta(cesta);
         initComponents();
     }
 
@@ -119,12 +120,12 @@ public class CestaDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void setArrList() throws FileNotFoundException{
-        ArrayList<Stock> vis =new ArrayList<>();
+        ArrayList<Stock> ces =new ArrayList<>();
             
-            CestaCompra c = new CestaCompra();
-            vis =c.getCesta(); 
-                    for(int i=0;i<vis.size();i++){
-                        modelo.addElement(vis.get(i).toString());
+            ces =c.getCesta(); 
+//            System.out.println(c.cesta.toString());
+                    for(int i=0;i<c.getCesta().size();i++){
+                        modelo.addElement(c.cesta.get(i));
                     }
 
     }
@@ -158,7 +159,7 @@ public class CestaDisplay extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CestaDisplay().setVisible(true);
+                //new CestaDisplay().setVisible(true);
             }
         });
     }

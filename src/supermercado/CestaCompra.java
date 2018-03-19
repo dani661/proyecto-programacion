@@ -34,6 +34,11 @@ public class CestaCompra {
         this.precio = precio;
     }
 
+    public void setCesta(ArrayList<Stock> cesta) {
+        this.cesta = cesta;
+    }
+    
+
     public float getSaldo() {
         return saldo;
     }
@@ -62,6 +67,7 @@ public class CestaCompra {
     public String toString() {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
+    
     public void engadeCesta(int i) throws FileNotFoundException{
         cesta=new ArrayList();
         CestaCompra c=new CestaCompra();
@@ -71,6 +77,7 @@ public class CestaCompra {
                    System.out.println(obs.toString());
                    
                    cesta.add(obs);   //añado en cesta el objeto a la lista
+                   
                    
     }
 }
