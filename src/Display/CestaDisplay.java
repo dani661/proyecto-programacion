@@ -66,7 +66,12 @@ public class CestaDisplay extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Volver");
+        jButton3.setText("Cerrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jList2.setModel(modelo);
         try{
@@ -127,8 +132,12 @@ public class CestaDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void setArrList() throws FileNotFoundException{
             

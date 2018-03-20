@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import supermercado.Stock;
 import supermercado.Supermercado;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import supermercado.CestaCompra;
 
 
@@ -72,6 +73,11 @@ public class Display extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cerrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jList2.setModel(modelo);
         try{
@@ -123,6 +129,7 @@ public class Display extends javax.swing.JFrame {
         
         CestaDisplay cd1=new CestaDisplay(cesta);
             cd1.setVisible(true);
+            super.dispose();    //cierra solo la ventana de comprar
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -135,6 +142,11 @@ public class Display extends javax.swing.JFrame {
             Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
