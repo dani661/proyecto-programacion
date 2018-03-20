@@ -28,8 +28,9 @@ public class CajerosDisplay extends javax.swing.JFrame {
      */
     public CajerosDisplay() throws FileNotFoundException {
         Stock s = new Stock(); 
-        setLocationRelativeTo(null);
+         setLocationRelativeTo(null);
         lista=s.getStock();
+       
         initComponents();
     }
 
@@ -178,16 +179,8 @@ public class CajerosDisplay extends javax.swing.JFrame {
                         modelo.addElement(vis.get(i).toString());
                     }
 
-    
-
-
-    
-   
-                    
-
-    
-    
-
+        } //faltaba este hijodeputa aqui
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> jList1;
     private DefaultListModel modelo;
