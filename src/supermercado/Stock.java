@@ -97,20 +97,29 @@ public class Stock {
                 }
         }
     }
+    public void actualizaStock(ArrayList<Stock> stocknuevo) throws IOException{
+        pw=new PrintWriter(new FileWriter(fich,false));
+                 
+                 for(int i=0; i<stock.size();i++){
+                   pw.write(stocknuevo.get(i).getProducto()+","+stocknuevo.get(i).getPrecio()+","
+                         +stocknuevo.get(i).getCantidad()+System.getProperty("line.separator"));
+                 }
+         pw.close(); 
+    }
     
     public ArrayList revisaStock(){
-        ArrayList<Stock> prodreponer = new ArrayList<>();
         
         for(int i=0; i<stock.size();i++){
             if(stock.get(i).getCantidad()==0){
-                prodreponer.add(stock.get(i));
-                //System.out.println("O producto "+stock.get(i).getProducto());
+                int j=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                "Dame as unidades a repoñer para: "+stock.get(i).getProducto()));
+                        stock.get(i).setCantidad(j);
             }
             else{
                 
             }
         }
-        return prodreponer;
+        return stock;
     }
     
 }

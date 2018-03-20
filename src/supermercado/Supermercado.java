@@ -1,5 +1,6 @@
 package supermercado;
 
+import Display.CajerosDisplay;
 import Display.Display;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +15,9 @@ public class Supermercado {
         int resposta=0;
         Stock s =new Stock();
         CestaCompra c= new CestaCompra();
-        
+           Cajeros cs = new Cajeros();
+           
+          // cs.Repon(4,s.stock);
            String[] opciones={"Cliente","Cajera/o"};
            
            String r=(String)JOptionPane.showInputDialog(null,"Selecciona opcion:"," ",JOptionPane.PLAIN_MESSAGE,null,opciones,opciones);
@@ -24,7 +27,8 @@ public class Supermercado {
                         d1.setVisible(true);
                     break;
                 case "Cajera/o":
-                    
+                    CajerosDisplay d2=new CajerosDisplay();
+                        d2.setVisible(true);
                     break;
               }
             

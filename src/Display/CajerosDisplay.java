@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import supermercado.Stock;
 import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
+import supermercado.Cajeros;
 import supermercado.Supermercado;
 
 /**
@@ -47,6 +48,7 @@ public class CajerosDisplay extends javax.swing.JFrame {
         modelo=new DefaultListModel();
         jList1 = new javax.swing.JList<>();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,16 +62,25 @@ public class CajerosDisplay extends javax.swing.JFrame {
 
         jTextField1.setText("Stock disponible");
 
+        jButton1.setText("Reponer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(93, 93, 93)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -79,13 +90,39 @@ public class CajerosDisplay extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int i=jList1.getSelectedIndex();
+            Cajeros cs =new Cajeros();
+            
+        try {
+            Stock s=new Stock();
+            lista=cs.Repon(i, lista);
+                s.actualizaStock(lista);
+            modelo.clear();
+                refrArrList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CajerosDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CajerosDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void refrArrList() throws FileNotFoundException{
+       modelo.clear();
+                    for(int i=0;i<lista.size();i++){
+                        modelo.addElement(lista.get(i).toString());
+                    }
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -182,6 +219,7 @@ public class CajerosDisplay extends javax.swing.JFrame {
         } //faltaba este hijodeputa aqui
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jList1;
     private DefaultListModel modelo;
     private javax.swing.JScrollPane jScrollPane1;
