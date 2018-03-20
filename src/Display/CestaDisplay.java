@@ -28,9 +28,10 @@ public class CestaDisplay extends javax.swing.JFrame {
      * Creates new form CestaDisplay
      */
     public CestaDisplay(ArrayList cesta) {
+        setLocationRelativeTo(null);
         this.cesta=cesta;
         initComponents();
-        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -125,7 +126,9 @@ public class CestaDisplay extends javax.swing.JFrame {
             
 //            System.out.println(c.cesta.toString());
                     for(int i=0;i<cesta.size();i++){
-                        modelo.addElement(cesta.get(i));
+                        Stock mod=cesta.get(i);
+                        mod.setCantidad(1);
+                        modelo.addElement(mod);
                     }
 
     }
