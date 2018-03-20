@@ -14,35 +14,20 @@ public class Supermercado {
         int resposta=0;
         Stock s =new Stock();
         CestaCompra c= new CestaCompra();
-         
         
-                    Display d1=new Display();
-                        d1.setVisible(true);
-         // Cajeros c =new Cajeros();
-           // c.Repon();
-          
-      /* while(resposta!=1){
-           String[] opciones={"ver productos","comprar producto","ver cesta da compra","salir"};
+           String[] opciones={"Cliente","Cajera/o"};
            
            String r=(String)JOptionPane.showInputDialog(null,"Selecciona opcion:"," ",JOptionPane.PLAIN_MESSAGE,null,opciones,opciones);
               switch(r){
-                case "ver productos":
-                    
+                case "Cliente":
+                    Display d1=new Display();
+                        d1.setVisible(true);
                     break;
-                case "comprar producto":
-                    
-                    break;
-                case "ver cesta da compra":
-                    
-                    break;
-                case "salir":
+                case "Cajera/o":
                     
                     break;
               }
-            resposta= JOptionPane.showConfirmDialog(null, "Desea realizar otra accion?","", 1, 2);
-            //0 e si, 1 e non
-//System.out.println(resposta);
-        */      
+            
          }
         
      /*      try {

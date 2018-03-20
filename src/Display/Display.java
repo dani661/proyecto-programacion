@@ -192,16 +192,19 @@ public class Display extends javax.swing.JFrame {
         // Stock obs=new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),
              //    lista.get(i).getCantidad());
              
-             System.out.println(lista.get(i).getProducto()+lista.get(i).getPrecio()+" cantidad 1");
+          //   System.out.println(lista.get(i).getProducto()+lista.get(i).getPrecio()+" cantidad 1");
             
+        if(lista.get(i).getCantidad()<1){
+            System.out.println("Este articulo no dispone de mas unidades, seleccione otro por favor.");
+        }else{
              cesta.add(lista.get(i));   //añado en cesta el objeto a la lista
              
              lista.get(i).setCantidad(lista.get(i).getCantidad()-1);
              
 //             cesta.get(i).setCantidad(1); //cantidad de produsctos añadidos a la cesta
          refrArrList();
-         return cesta;
-        
+         }
+        return cesta;        
     }
     private void refrArrList() throws FileNotFoundException{
        modelo.clear();
