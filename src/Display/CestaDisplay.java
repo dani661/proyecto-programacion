@@ -116,6 +116,14 @@ public class CestaDisplay extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        int i = jList2.getSelectedIndex();
+        cesta.remove(i);
+        modelo.clear();
+        try {
+            setArrList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -136,18 +136,6 @@ public class Display extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-   /* public ArrayList engadeCesta(int i) throws FileNotFoundException{
-        
-        CestaCompra c=new CestaCompra();
-            Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
-                // con el int del parametro selecciono pos en a.list y lo meto en cesta
-            Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),1);
-                   System.out.println(obs.toString());
-                   s.stock.get(i).setCantidad(s.stock.get(i).getCantidad()-1);
-                   cesta.add(obs);   //añado en cesta el objeto a la lista
-                   return cesta;
-                   
-    }*/
     /**
      * @param args the command line arguments
      */
