@@ -25,7 +25,7 @@ import supermercado.CestaCompra;
 public class Display extends javax.swing.JFrame {
     
     CestaCompra c=new CestaCompra();
-
+    ArrayList<Stock> cesta=new ArrayList();
     /**
      * Creates new form Display
      */
@@ -114,7 +114,7 @@ public class Display extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CestaDisplay cd1=new CestaDisplay(c.getCesta());
+        CestaDisplay cd1=new CestaDisplay(cesta);
             cd1.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -123,12 +123,24 @@ public class Display extends javax.swing.JFrame {
        
         try {
             int i=jList2.getSelectedIndex();
-            c.engadeCesta(i);
+            cesta=engadeCesta(i);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public ArrayList engadeCesta(int i) throws FileNotFoundException{
+        
+        CestaCompra c=new CestaCompra();
+            Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
+                // con el int del parametro selecciono pos en a.list y lo meto en cesta
+            Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad());
+                   System.out.println(obs.toString());
+                   
+                   cesta.add(obs);   //añado en cesta el objeto a la lista
+                   return cesta;
+                   
+    }
     /**
      * @param args the command line arguments
      */
@@ -176,13 +188,13 @@ public class Display extends javax.swing.JFrame {
 
     }
     public void engadecesta(int i) throws FileNotFoundException{
-        CestaCompra c=new CestaCompra();
+       
         Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
              // con el int del parametro selecciono pos en a.list y lo meto en cesta
          Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad());
            System.out.println( s.stock.get(i).toString());
            System.out.println(s.stock.get(i).getProducto()+s.stock.get(i).getPrecio()+s.stock.get(i).getCantidad());
-         c.cesta.add(obs);   //añado en cesta el objeto a la lista
+         cesta.add(obs);   //añado en cesta el objeto a la lista
         
     }
 

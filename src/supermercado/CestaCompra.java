@@ -68,16 +68,5 @@ public class CestaCompra {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
     
-    public void engadeCesta(int i) throws FileNotFoundException{
-        cesta=new ArrayList();
-        CestaCompra c=new CestaCompra();
-            Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
-                // con el int del parametro selecciono pos en a.list y lo meto en cesta
-            Stock obs=new Stock(s.stock.get(i).getProducto(),s.stock.get(i).getPrecio(),s.stock.get(i).getCantidad());
-                   System.out.println(obs.toString());
-                   
-                   cesta.add(obs);   //añado en cesta el objeto a la lista
-                   
-                   
-    }
+    
 }
