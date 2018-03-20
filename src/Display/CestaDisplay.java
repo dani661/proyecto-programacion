@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import supermercado.CestaCompra;
 import supermercado.Stock;
 import supermercado.Supermercado;
@@ -132,7 +133,8 @@ public class CestaDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        Float pago=Float.parseFloat(JOptionPane.showInputDialog(null,"Introduce el dinero para pagar"));
+            c.pagar(pago, cesta);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

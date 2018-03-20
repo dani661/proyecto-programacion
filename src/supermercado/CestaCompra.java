@@ -2,6 +2,7 @@ package supermercado;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,5 +69,22 @@ public class CestaCompra {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
     
-    
+    public void pagar(Float pago, ArrayList<Stock> lista){
+        Float cambio,total=0f;
+            for(int i=0;i<lista.size();i++){
+                System.out.println(lista.size());
+                        total=total+lista.get(i).getPrecio();
+                    }
+            cambio=pago-total;
+                if(cambio<0){
+                    while(pago<total){
+                    Float cextra=Float.parseFloat(JOptionPane.showInputDialog(null,
+                            "Introduce cambio adicional"));
+                    pago=cextra+pago;
+                    }
+                       
+                }else{
+                    JOptionPane.showMessageDialog(null,"Su cambio es: "+cambio);
+                }
+    }
 }
