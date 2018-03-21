@@ -43,22 +43,24 @@ public class Ofertas {
             while(sc.hasNextLine()){
                 String linea=sc.nextLine();
                     arrayofer=linea.split(",");         //corto la linea y añado a un array
-                    Ofertas prod=new Ofertas(arrayofer[0],Float.parseFloat(arrayofer[1]));
+                    Ofertas of=new Ofertas(arrayofer[0],Float.parseFloat(arrayofer[1]));
                             
-                    ofertas.add(prod);              //añado producto al arraylist desde el archivo
+                    ofertas.add(of);              //añado oferta al arraylist desde el archivo
                         
             }
     }
         
-        public void calcularPrecioDescuento(float precio, String codigo) throws FileNotFoundException{
-            float preciodes;
-            Stock st = new Stock();
+        public Float calcularPrecioDescuento(float precio, String codigo) throws FileNotFoundException{
+            float preciodes=0f;
             
             for(int i =0;i<ofertas.size();i++){
             
-                if(codigo.equals(ofertas.get(i).getCodoferta()))
-                    preciodes=st.getPrecio()*ofertas.get(i).getDescuento();
+                if(codigo.equals(ofertas.get(i).getCodoferta())){
+                    preciodes=precio*ofertas.get(i).getDescuento();
+                }
             }   
+                preciodes=precio-preciodes;
+            return preciodes;
         }
 
     public ArrayList<Ofertas> getOfertas() {

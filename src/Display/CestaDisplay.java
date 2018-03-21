@@ -134,7 +134,12 @@ public class CestaDisplay extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Float pago=Float.parseFloat(JOptionPane.showInputDialog(null,"Introduce el dinero para pagar"));
+        try {
             c.pagar(pago, cesta);
+                modelo.clear();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

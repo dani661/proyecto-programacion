@@ -69,12 +69,23 @@ public class CestaCompra {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
     
-    public void pagar(Float pago, ArrayList<Stock> lista){
+    public void pagar(Float pago, ArrayList<Stock> lista) throws FileNotFoundException{
         Float cambio,total=0f;
             for(int i=0;i<lista.size();i++){
                 System.out.println(lista.size());
                         total=total+lista.get(i).getPrecio();
                     }
+            
+                    Ofertas of1= new Ofertas();
+                    
+                      int res= JOptionPane.showConfirmDialog(null,"Tienes un codigo de oferta a aplicar?");
+                            
+                            if (res==0){
+                                String cof= JOptionPane.showInputDialog(null,"Introduce o codigo da oferta a "
+                                       + "aplicar");
+                                total=of1.calcularPrecioDescuento(total,cof);
+                            }
+                      
             cambio=pago-total;
                 if(cambio<0){
                     while(pago<total){
