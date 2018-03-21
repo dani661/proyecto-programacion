@@ -56,6 +56,11 @@ public class CajerosDisplay extends javax.swing.JFrame {
         jTextField1.setText("Stock disponible");
 
         jButton1.setText("Reponer Stock");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,9 +94,9 @@ public class CajerosDisplay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException {                                         
-     
-        Cajeros c = new Cajeros();          
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
         int i=jList1.getSelectedIndex();
             Cajeros cs =new Cajeros();
             
@@ -107,7 +112,8 @@ public class CajerosDisplay extends javax.swing.JFrame {
             Logger.getLogger(CajerosDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
      
- }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void refrArrList() throws FileNotFoundException{
        modelo.clear();
                     for(int i=0;i<lista.size();i++){
