@@ -91,8 +91,7 @@ public class CajerosDisplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException {                                         
      
-        Cajeros c = new Cajeros(); 
-                                            
+        Cajeros c = new Cajeros();          
         int i=jList1.getSelectedIndex();
             Cajeros cs =new Cajeros();
             
