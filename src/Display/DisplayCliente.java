@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-import supermercado.CestaCompra;
 import supermercado.Stock;
 import supermercado.Supermercado;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import supermercado.CestaCompra;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,17 +23,21 @@ import supermercado.Supermercado;
  *
  * @author Dani
  */
-public class CestaDisplay extends javax.swing.JFrame {
+public class DisplayCliente extends javax.swing.JFrame {
+    
     CestaCompra c=new CestaCompra();
+    ArrayList<Stock> lista=new ArrayList();
     ArrayList<Stock> cesta=new ArrayList();
+    
     /**
-     * Creates new form CestaDisplay
+     * Creates new form Display
      */
-    public CestaDisplay(ArrayList cesta) {
+    public DisplayCliente() throws FileNotFoundException {
+        Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
+             // con el int del parametro selecciono pos en a.list y lo meto en cesta
+         lista=s.getStock();
         setLocationRelativeTo(null);
-        this.cesta=cesta;
         initComponents();
-        
     }
 
     /**
@@ -53,14 +58,14 @@ public class CestaDisplay extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/quitar.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cesta.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/descarga.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoagregar.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -87,74 +92,60 @@ public class CestaDisplay extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(63, 63, 63))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 71, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jButton2)
-                .addGap(77, 77, 77)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        int i = jList2.getSelectedIndex();
-        cesta.remove(i);
-        modelo.clear();
-        try {
-            setArrList();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        CestaDisplay cd1=new CestaDisplay(cesta);
+            cd1.setVisible(true);
+            super.dispose();    //cierra solo la ventana de comprar
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Float pago=Float.parseFloat(JOptionPane.showInputDialog(null,"Introduce el dinero para pagar"));
+       
         try {
-            c.pagar(pago, cesta);
-            modelo.clear();
+            int i=jList2.getSelectedIndex();
+            cesta=engadecesta(i);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void setArrList() throws FileNotFoundException{
-            
-//            System.out.println(c.cesta.toString());
-                    for(int i=0;i<cesta.size();i++){
-                        Stock mod=cesta.get(i);
-                        mod.setCantidad(1);
-                        modelo.addElement(mod);
-                    }
-
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -172,22 +163,66 @@ public class CestaDisplay extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CestaDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CestaDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CestaDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CestaDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new CestaDisplay().setVisible(true);
+                
+              
+                try {
+                    new DisplayCliente().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(DisplayCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+    }
+    private void setArrList() throws FileNotFoundException{
+        ArrayList<Stock> vis =new ArrayList<>();
+            
+            Stock s = new Stock();
+            vis =s.getStock(); 
+                    for(int i=0;i<vis.size();i++){
+                        modelo.addElement(vis.get(i).toString());
+                    }
+
+    }
+    public ArrayList engadecesta(int i) throws FileNotFoundException{
+       
+        
+        // Stock obs=new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),
+             //    lista.get(i).getCantidad());
+             
+          //   System.out.println(lista.get(i).getProducto()+lista.get(i).getPrecio()+" cantidad 1");
+            
+        if(lista.get(i).getCantidad()<1){
+            System.out.println("Este articulo no dispone de mas unidades, seleccione otro por favor.");
+        }else{
+             cesta.add(lista.get(i));   //añado en cesta el objeto a la lista
+             
+             lista.get(i).setCantidad(lista.get(i).getCantidad()-1);
+             
+//             cesta.get(i).setCantidad(1); //cantidad de produsctos añadidos a la cesta
+         refrArrList();
+         }
+        return cesta;        
+    }
+    private void refrArrList() throws FileNotFoundException{
+       modelo.clear();
+                    for(int i=0;i<lista.size();i++){
+                        modelo.addElement(lista.get(i).toString());
+                    }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
