@@ -75,7 +75,7 @@ public class CestaCompra {
                 System.out.println(lista.size());
                         total=total+lista.get(i).getPrecio();
                     }
-            
+            //para aplicar ofertas
                     Ofertas of1= new Ofertas();
                     
                       int res= JOptionPane.showConfirmDialog(null,"Tienes un codigo de oferta a aplicar?");
@@ -85,7 +85,7 @@ public class CestaCompra {
                                        + "aplicar");
                                 total=of1.calcularPrecioDescuento(total,cof);
                             }
-                      
+            // pago final          
             cambio=pago-total;
                 if(cambio<0){
                     while(pago<total){
