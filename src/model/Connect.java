@@ -100,8 +100,8 @@ public class Connect {
 
                 while (rs.next()) {
                     String producto = rs.getString("producto");
-                    int precio = Integer.parseInt(rs.getString("precio"));
-                    int cantidad = Integer.parseInt(rs.getString("cantidad"));
+                    Float precio = rs.getFloat("precio");
+                    int cantidad = rs.getInt("cantidad");
                     tabla.add(new Stock(producto,precio,cantidad));
                 }
                 rs.close();

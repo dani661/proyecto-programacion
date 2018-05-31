@@ -37,9 +37,9 @@ public class TablasDisplay extends javax.swing.JFrame {
         stmt = con.createStatement();
 
         try {
-              cc.comando(stmt);
-              ResultSet rs1 = stmt.executeQuery("describe stock;"); 
-                    System.out.println(rs1.toString());
+              //cc.comando(stmt);
+              //ResultSet rs1 = stmt.executeQuery("describe stock;"); 
+                    //System.out.println(rs1.toString());
               
             ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table';");
                 while (rs.next()) {
@@ -70,7 +70,7 @@ public class TablasDisplay extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        selectabla = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,10 +88,10 @@ public class TablasDisplay extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        selectabla.setText("Selecciona tabla");
+        selectabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                selectablaActionPerformed(evt);
             }
         });
 
@@ -108,12 +108,12 @@ public class TablasDisplay extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(selectabla)
                 .addGap(82, 82, 82)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(340, Short.MAX_VALUE)
+                .addContainerGap(377, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -122,11 +122,11 @@ public class TablasDisplay extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(selectabla)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
 
         pack();
@@ -136,14 +136,14 @@ public class TablasDisplay extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Connect cnn=new Connect();
+    private void selectablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectablaActionPerformed
+        tabact = jComboBox1.getSelectedItem().toString();
         try {
-            cnn.getTabla(tabact);
+            refrescaLista(tabact);
         } catch (SQLException ex) {
             Logger.getLogger(TablasDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_selectablaActionPerformed
     
     public void refrescaLista(String tablaac) throws SQLException {
         ArrayList<Stock> lista;
@@ -197,9 +197,9 @@ public class TablasDisplay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton selectabla;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
