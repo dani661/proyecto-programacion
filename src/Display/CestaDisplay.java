@@ -8,9 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import supermercado.CestaCompra;
-import supermercado.Stock;
-import supermercado.Supermercado;
+import Controlador.CestaCompra;
+import Controlador.Stock;
+import Controlador.Supermercado;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

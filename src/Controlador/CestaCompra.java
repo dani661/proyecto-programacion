@@ -1,4 +1,4 @@
-package supermercado;
+package Controlador;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

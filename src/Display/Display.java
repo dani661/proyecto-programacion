@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import supermercado.Stock;
-import supermercado.Supermercado;
+import Controlador.Stock;
+import Controlador.Supermercado;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import supermercado.CestaCompra;
+import Controlador.CestaCompra;
 
 
 /*

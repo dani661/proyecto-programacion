@@ -1,4 +1,4 @@
-package supermercado;
+package Controlador;
 
 import Display.CajerosDisplay;
 import Display.Display;
