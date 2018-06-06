@@ -102,10 +102,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="modelo=new DefaultListModel();"/>
             <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private DefaultListModel modelo;"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="try{&#xa;setArrList();&#xa;} catch (IOException ex) {&#xa;            Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jList2.setModel(modelo);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>

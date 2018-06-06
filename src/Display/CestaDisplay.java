@@ -27,11 +27,20 @@ public class CestaDisplay extends javax.swing.JFrame {
     ArrayList<Stock> cesta=new ArrayList();
     /**
      * Creates new form CestaDisplay
+     * @param cestac
      */
-    public CestaDisplay(ArrayList cesta) {
+    public CestaDisplay(ArrayList cestac) {
         setLocationRelativeTo(null);
-        this.cesta=cesta;
+        this.cesta=cestac;
         initComponents();
+        
+        modelo=new DefaultListModel();
+        jList2.setModel(modelo);
+            try{
+            setArrList();
+            } catch (IOException ex) {
+                        Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
     }
 
@@ -48,7 +57,6 @@ public class CestaDisplay extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        modelo=new DefaultListModel();
         jList2 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,12 +82,6 @@ public class CestaDisplay extends javax.swing.JFrame {
             }
         });
 
-        jList2.setModel(modelo);
-        try{
-            setArrList();
-        } catch (IOException ex) {
-            Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);
-        }
         jScrollPane2.setViewportView(jList2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,7 +153,6 @@ public class CestaDisplay extends javax.swing.JFrame {
 //            System.out.println(c.cesta.toString());
                     for(int i=0;i<cesta.size();i++){
                         Stock mod=cesta.get(i);
-                        mod.setCantidad(1);
                         modelo.addElement(mod);
                     }
 

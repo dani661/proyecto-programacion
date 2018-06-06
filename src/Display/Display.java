@@ -154,11 +154,9 @@ public class Display extends javax.swing.JFrame {
         try {
             int i=jTable1.getSelectedRow();
             cesta=engadecesta(i);
-        } catch (FileNotFoundException ex) {
+        } catch (SQLException | FileNotFoundException ex) {
             Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -209,11 +207,27 @@ public class Display extends javax.swing.JFrame {
         });
     }
     public ArrayList engadecesta(int i) throws FileNotFoundException, SQLException{
-        
-        if(lista.get(i).getCantidad()<1){
-            System.out.println("Este articulo no dispone de mas unidades, seleccione otro por favor.");
-        }else{
-             cesta.add(lista.get(i));   //añado en cesta el objeto a la lista
+        boolean repe=false;int k=0;
+            if(lista.get(i).getCantidad()<1){
+                System.out.println("Este articulo no dispone de mas unidades, seleccione otro por favor.");
+            }else{
+                for(int j=0;j<cesta.size();j++){
+                     if(cesta.get(j).getProducto().equals(lista.get(i).getProducto())){
+                         repe=true;
+                         k=j;
+                     }
+                     else{
+                         repe=false;
+                     }
+                  }
+                
+              if(repe==true){
+                  cesta.set(k,new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),cesta.get(k).getCantidad()+1));
+                     
+              }else{
+                  cesta.add(new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),1));   //añado en cesta el objeto a la lista
+              }  
+             
              
              lista.get(i).setCantidad(lista.get(i).getCantidad()-1);
              
