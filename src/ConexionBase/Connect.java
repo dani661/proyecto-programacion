@@ -1,4 +1,4 @@
-package model;
+package ConexionBase;
 
 import Controlador.Ofertas;
 import Controlador.Stock;
