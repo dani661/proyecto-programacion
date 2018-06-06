@@ -11,6 +11,10 @@ import Controlador.Supermercado;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import Controlador.CestaCompra;
+import Controlador.Ofertas;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import model.Connect;
 
 
 /*
@@ -28,16 +32,24 @@ public class Display extends javax.swing.JFrame {
     CestaCompra c=new CestaCompra();
     ArrayList<Stock> lista=new ArrayList();
     ArrayList<Stock> cesta=new ArrayList();
-    
+    Connect cnn;
     /**
      * Creates new form Display
      */
-    public Display() throws FileNotFoundException {
-        Stock s = new Stock(); //instancio clase stock objeto s para llamar al arraylist
-             // con el int del parametro selecciono pos en a.list y lo meto en cesta
-         lista=s.getStock();
+    public Display() throws FileNotFoundException, SQLException {
         setLocationRelativeTo(null);
+        
+        cnn=new Connect();
+         
         initComponents();
+        
+        lista=cnn.getTabla("stock");
+            DefaultTableModel model = new DefaultTableModel(new String[]{"Producto", "Precio","Cantidad"}, 0);
+                jTable1.setModel(model);
+                    for (int count = 0; count < lista.size(); count++) { //esto rellena la tabla de movidas
+                        model.addRow(new Object[]{lista.get(count).getProducto(), lista.get(count).getPrecio(),lista.get(count).getCantidad()});
+                    }
+        
     }
 
     /**
@@ -52,9 +64,8 @@ public class Display extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        modelo=new DefaultListModel();
-        jList2 = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,13 +90,18 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        jList2.setModel(modelo);
-        try{
-            setArrList();
-        } catch (IOException ex) {
-            Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jScrollPane2.setViewportView(jList2);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,33 +109,33 @@ public class Display extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(118, 118, 118))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(22, 22, 22))))
+                        .addComponent(jButton3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,9 +152,11 @@ public class Display extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
         try {
-            int i=jList2.getSelectedIndex();
+            int i=jTable1.getSelectedRow();
             cesta=engadecesta(i);
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -184,28 +202,14 @@ public class Display extends javax.swing.JFrame {
                     new Display().setVisible(true);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
-    private void setArrList() throws FileNotFoundException{
-        ArrayList<Stock> vis =new ArrayList<>();
-            
-            Stock s = new Stock();
-            vis =s.getStock(); 
-                    for(int i=0;i<vis.size();i++){
-                        modelo.addElement(vis.get(i).toString());
-                    }
-
-    }
-    public ArrayList engadecesta(int i) throws FileNotFoundException{
-       
+    public ArrayList engadecesta(int i) throws FileNotFoundException, SQLException{
         
-        // Stock obs=new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),
-             //    lista.get(i).getCantidad());
-             
-          //   System.out.println(lista.get(i).getProducto()+lista.get(i).getPrecio()+" cantidad 1");
-            
         if(lista.get(i).getCantidad()<1){
             System.out.println("Este articulo no dispone de mas unidades, seleccione otro por favor.");
         }else{
@@ -218,10 +222,11 @@ public class Display extends javax.swing.JFrame {
          }
         return cesta;        
     }
-    private void refrArrList() throws FileNotFoundException{
-       modelo.clear();
-                    for(int i=0;i<lista.size();i++){
-                        modelo.addElement(lista.get(i).toString());
+    private void refrArrList() throws FileNotFoundException, SQLException{
+           DefaultTableModel model = new DefaultTableModel(new String[]{"Producto", "Precio","Cantidad"}, 0);
+                jTable1.setModel(model);
+                    for (int count = 0; count < lista.size(); count++) { //esto rellena la tabla de movidas
+                        model.addRow(new Object[]{lista.get(count).getProducto(), lista.get(count).getPrecio(),lista.get(count).getCantidad()});
                     }
 
     }
@@ -230,8 +235,7 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JList<String> jList2;
-    private DefaultListModel modelo;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

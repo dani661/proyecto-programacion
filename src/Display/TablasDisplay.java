@@ -298,7 +298,12 @@ public class TablasDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+            Connect cc= new Connect();
+        try {
+            cc.borragrf(stmt, tabact, elprod.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(TablasDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     
     public void refrescaLista(String tablaac) throws SQLException {

@@ -2,8 +2,10 @@ package Controlador;
 
 import Display.CajerosDisplay;
 import Display.Display;
+import Display.TablasDisplay;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -11,11 +13,12 @@ import javax.swing.JOptionPane;
 
 public class Supermercado {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, SQLException {
         int resposta=0;
         Stock s =new Stock();
         CestaCompra c= new CestaCompra();
            Cajeros cs = new Cajeros();
+           TablasDisplay ds=new TablasDisplay();
            
           // cs.Repon(4,s.stock);
            String[] opciones={"Cliente","Cajera/o"};
@@ -28,7 +31,7 @@ public class Supermercado {
                     break;
                 case "Cajera/o":
                     CajerosDisplay d2=new CajerosDisplay();
-                        d2.setVisible(true);
+                        ds.setVisible(true);
                     break;
               }
             
