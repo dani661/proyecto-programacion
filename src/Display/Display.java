@@ -143,7 +143,7 @@ public class Display extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        CestaDisplay cd1=new CestaDisplay(cesta);
+        CestaDisplay cd1=new CestaDisplay(cesta,lista);
             cd1.setVisible(true);
             super.dispose();    //cierra solo la ventana de comprar
         
@@ -223,7 +223,7 @@ public class Display extends javax.swing.JFrame {
                 
               if(repe==true){
                   cesta.set(k,new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),cesta.get(k).getCantidad()+1));
-                     
+                   
               }else{
                   cesta.add(new Stock(lista.get(i).getProducto(),lista.get(i).getPrecio(),1));   //añado en cesta el objeto a la lista
               }  

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import Controlador.CestaCompra;
 import Controlador.Stock;
 import Controlador.Supermercado;
+import java.sql.SQLException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,11 +26,12 @@ import Controlador.Supermercado;
 public class CestaDisplay extends javax.swing.JFrame {
     CestaCompra c=new CestaCompra();
     ArrayList<Stock> cesta=new ArrayList();
+    private final ArrayList lista;
     /**
      * Creates new form CestaDisplay
      * @param cestac
      */
-    public CestaDisplay(ArrayList cestac) {
+    public CestaDisplay(ArrayList cestac,ArrayList lista) {
         setLocationRelativeTo(null);
         this.cesta=cestac;
         initComponents();
@@ -41,6 +43,7 @@ public class CestaDisplay extends javax.swing.JFrame {
             } catch (IOException ex) {
                         Logger.getLogger(Supermercado.class.getName()).log(Level.SEVERE, null, ex);
             }
+        this.lista = lista;
         
     }
 
@@ -137,9 +140,11 @@ public class CestaDisplay extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Float pago=Float.parseFloat(JOptionPane.showInputDialog(null,"Introduce el dinero para pagar"));
         try {
-            c.pagar(pago, cesta);
+            c.pagar(pago, cesta,lista);
                 modelo.clear();
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(CestaDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -105,7 +105,7 @@ public class Connect {
                 stmt.execute("UPDATE " + tabact + " set Precio=" + precio + ",Cantidad=" + cant + " WHERE Producto='" + val1 + "';");
             } else if (val2.isEmpty()) {
                 int cant = Integer.parseInt(val3);
-                stmt.execute("UPDATE " + tabact + " set Producto='" + val1 + "',Cantidad=" + cant + " WHERE Producto='" + val1 + "';");
+                stmt.execute("UPDATE " + tabact + " set Cantidad=" + cant + " WHERE Producto='" + val1 + "';");
             } else if (val3.isEmpty()) {
                 Float precio = Float.parseFloat(val2);
                 stmt.execute("UPDATE " + tabact + " set Producto='" + val1 + "',Precio=" + precio + " WHERE Producto='" + val1 + "';");

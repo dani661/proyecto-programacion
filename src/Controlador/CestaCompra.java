@@ -1,8 +1,12 @@
 package Controlador;
 
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Connect;
 
 /**
  *
@@ -69,7 +73,7 @@ public class CestaCompra {
         return "CestaCompra{" + "precio=" + precio + ", saldo=" + saldo + ", cambio=" + cambio + ", numpro=" + numpro + '}';
     }
     
-    public void pagar(Float pago, ArrayList<Stock> lista) throws FileNotFoundException{
+    public void pagar(Float pago, ArrayList<Stock> lista,ArrayList<Stock> cesta) throws FileNotFoundException, SQLException{
         Float cambio,total=0f;
             for(int i=0;i<lista.size();i++){
                 System.out.println(lista.size());
@@ -96,6 +100,13 @@ public class CestaCompra {
                        
                 }else{
                     JOptionPane.showMessageDialog(null,"Su cambio es: "+cambio);
+                    Connect cn=new Connect();Statement stmt;
+                    Connection cc=cn.conecta(); stmt=cc.createStatement();
+                    for(int i=0;i<lista.size();i++){
+                        cn.actualizagrf(stmt, "stock",cesta.get(i).getProducto(),"",Integer.toString(cesta.get(i).getCantidad()));
+                       
+                    }
+                    
                 }
     }
 }
