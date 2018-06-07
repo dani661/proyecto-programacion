@@ -82,9 +82,18 @@ public class Connect {
     }
 
     public void borragrf(Statement stmt, String tabact, String vborr) throws SQLException {
-        String borra = "DELETE FROM " + tabact + " WHERE nome='" + vborr + "';";
-        stmt.execute(borra);
-        JOptionPane.showMessageDialog(null, "Borrado o valor: " + vborr);
+        
+        if(tabact.equals("stock")){
+            String borra = "DELETE FROM " + tabact + " WHERE Producto='" + vborr + "';";
+            stmt.execute(borra);
+            JOptionPane.showMessageDialog(null, "Borrado o valor: " + vborr);
+        }
+        else{
+            String borra = "DELETE FROM " + tabact + " WHERE codigo='" + vborr + "';";
+            stmt.execute(borra);
+            JOptionPane.showMessageDialog(null, "Borrado o valor: " + vborr);
+        }
+        
     }
 
     public void actualiza(Statement stmt) throws SQLException {
