@@ -5,10 +5,10 @@
  */
 package Display;
 
-import Controlador.Ofertas;
+import modelo.Ofertas;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import Controlador.Stock;
+import modelo.Stock;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;

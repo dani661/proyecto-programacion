@@ -1,4 +1,4 @@
-package Controlador;
+package modelo;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;

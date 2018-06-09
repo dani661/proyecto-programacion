@@ -1,4 +1,4 @@
-package Controlador;
+package modelo;
 
 import Display.CajerosDisplay;
 import Display.Display;

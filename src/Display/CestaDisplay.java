@@ -8,9 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import Controlador.CestaCompra;
-import Controlador.Stock;
-import Controlador.Supermercado;
+import modelo.CestaCompra;
+import modelo.Stock;
+import modelo.Supermercado;
 import java.sql.SQLException;
 
 /*

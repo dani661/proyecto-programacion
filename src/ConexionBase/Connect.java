@@ -1,7 +1,7 @@
 package ConexionBase;
 
-import Controlador.Ofertas;
-import Controlador.Stock;
+import modelo.Ofertas;
+import modelo.Stock;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

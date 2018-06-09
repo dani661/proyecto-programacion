@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Controlador.Stock;
+import modelo.Stock;
 import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
-import Controlador.Cajeros;
-import Controlador.Supermercado;
+import modelo.Cajeros;
+import modelo.Supermercado;
 
 /**
  *
