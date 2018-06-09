@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Display;
+package vista;
 
 import modelo.Ofertas;
 import java.sql.Connection;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import ConexionBase.Connect;
+import controlador.Connect;
 
 /**
  *

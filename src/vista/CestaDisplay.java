@@ -1,4 +1,4 @@
-package Display;
+package vista;
 
 
 import java.io.FileNotFoundException;

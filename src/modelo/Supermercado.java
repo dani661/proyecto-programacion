@@ -1,8 +1,8 @@
 package modelo;
 
-import Display.CajerosDisplay;
-import Display.Display;
-import Display.TablasDisplay;
+import vista.CajerosDisplay;
+import vista.Display;
+import vista.TablasDisplay;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,7 +24,8 @@ public class Supermercado {
            String[] opciones={"Cliente","Cajera/o"};
            
            String r=(String)JOptionPane.showInputDialog(null,"Selecciona opcion:"," ",JOptionPane.PLAIN_MESSAGE,null,opciones,opciones);
-              switch(r){
+              
+           switch(r){
                 case "Cliente":
                     Display d1=new Display();
                         d1.setVisible(true);

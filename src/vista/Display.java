@@ -1,4 +1,4 @@
-package Display;
+package vista;
 
 
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import modelo.CestaCompra;
 import modelo.Ofertas;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
-import ConexionBase.Connect;
+import controlador.Connect;
 
 
 /*

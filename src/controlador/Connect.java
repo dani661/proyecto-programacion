@@ -1,4 +1,4 @@
-package ConexionBase;
+package controlador;
 
 import modelo.Ofertas;
 import modelo.Stock;
@@ -9,22 +9,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Ofertas;
+import modelo.Ofertas;
+import modelo.Stock;
+import modelo.Stock;
+import modelo.modelo;
 
 public class Connect {
 
     public Connection conecta() {
-        Connection c = null;
-
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:prueba.db");
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
-        return c;
+        modelo m=new modelo();
+        Connection con=m.modelo();
+        return con;
     }
-
     public void busca(Statement stmt) throws SQLException {
         String busc = (String) JOptionPane.showInputDialog(null, "dame o nome a buscar");
         String tabsc = (String) JOptionPane.showInputDialog(null, "dame a taboa");
@@ -164,4 +161,6 @@ public class Connect {
         con.close();
         return tabla;
     }
+
+    
 }
